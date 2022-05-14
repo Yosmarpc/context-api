@@ -9,6 +9,8 @@ const UserReducer = (state, action) => {
         case types.LISTAR_USUARIO:
             return { ...state, dataUser: payload };
 
+        case types.DETALLAR_USUARIO: return { ...state, dataDetalleUser: payload };
+
         default:
             return state
     }

@@ -30,11 +30,28 @@ const UserState = (props) => {
         }
     };
 
+    const getDetalleUser = async (id) => {
+        dispatch({ type: types.DETALLAR_USUARIO, payload: [] });
+        try {
+            const response = await axios(`${urlBase}users/${id}`, {
+                headers: { "Access-control-Allow-origin": true }
+
+            })
+            dispatch({ type: types.DETALLAR_USUARIO, payload: response.data.data });
+
+            console.log(response);
+
+        } catch (error) {
+
+        }
+    }
     return (
         <UserContext.Provider
             value={{
                 dataUser: state.dataUser,
+                dataDetalleUser: state.dataDetalleUser,
                 getListarUsuarios,
+                getDetalleUser
             }}
         >
             {props.children}
